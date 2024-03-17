@@ -35,3 +35,13 @@ class UserUpdate(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class GtinQuery(BaseModel):
+    gtin: str  # Простой пример, где GTIN - это просто строка
+
+class GtinResponse(BaseModel):
+    gtin: str
+    name: str  # Название продукта
+    description: str  # Описание продукта
+    # Добавь другие поля по мере необходимости
