@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from typing import Optional
 from datetime import datetime
 
@@ -26,3 +26,12 @@ class Token(BaseModel):
 # Схема для данных пользователя при аутентификации
 class TokenData(BaseModel):
     email: Optional[EmailStr] = None
+
+# Схема для обновления данных пользователя
+class UserUpdate(BaseModel):
+    username: Optional[str] = None
+    email: Optional[EmailStr] = None
+    password: Optional[str] = Field(None, min_length=3)
+
+    class Config:
+        orm_mode = True
